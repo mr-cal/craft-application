@@ -20,6 +20,12 @@ from unittest import mock
 
 import pytest
 from craft_application import services
+from craft_parts import callbacks
+
+
+@pytest.fixture(autouse=True)
+def unregister_callbacks():
+    callbacks.unregister_all()
 
 
 @pytest.fixture()
