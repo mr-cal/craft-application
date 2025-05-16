@@ -458,6 +458,9 @@ class Application:
                 craft_cli.emit.ended_ok()
                 sys.exit(0)
         except craft_cli.ProvideHelpException as err:
+            import datetime
+
+            print(datetime.datetime.now())
             print(err, file=sys.stderr)  # to stderr, as argparse normally does
             craft_cli.emit.ended_ok()
             sys.exit(0)
