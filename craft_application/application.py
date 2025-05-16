@@ -436,6 +436,9 @@ class Application:
 
         :returns: A ready-to-run Dispatcher object
         """
+        import datetime
+
+        print(f"standing up dispatcher ({datetime.datetime.now()})")
         dispatcher = self._create_dispatcher()
 
         try:
@@ -458,11 +461,9 @@ class Application:
                 craft_cli.emit.ended_ok()
                 sys.exit(0)
         except craft_cli.ProvideHelpException as err:
-            import datetime
-
-            print(datetime.datetime.now())
             print(err, file=sys.stderr)  # to stderr, as argparse normally does
             craft_cli.emit.ended_ok()
+            print(f"exiting ({datetime.datetime.now()})")
             sys.exit(0)
         except craft_cli.ArgumentParsingError as err:
             print(err, file=sys.stderr)  # to stderr, as argparse normally does
