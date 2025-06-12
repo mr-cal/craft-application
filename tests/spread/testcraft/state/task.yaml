@@ -1,0 +1,12 @@
+summary: test the test command as though running in CI.
+
+environment:
+  CI: "1"
+
+execute: |
+  testcraft state 2> actual-output.txt
+
+  diff actual-output.txt expected-output.txt
+
+restore: |
+  rm output.txt
